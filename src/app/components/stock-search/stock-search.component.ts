@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StockService } from '../../services/stock.service';
+import { StockService } from '../../services/stock/stock.service';
+import { Router } from '@angular/router';
 import Fuse from 'fuse.js';
 
 @Component({
@@ -14,7 +15,7 @@ export class StockSearchComponent implements OnInit {
     keys: ['Name', 'Symbol']
   })
 
-  constructor(private stockService: StockService) { }
+  constructor(private stockService: StockService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,12 +25,15 @@ export class StockSearchComponent implements OnInit {
   }
 
   hideOutput() {
-    this.output = [];
+    setTimeout(_=>{
+      this.output = [];
+    }, 250)
   }
 
   goToStock(stock) {
     console.log("this is the stock");
     console.log(stock);
+    this.router.navigate(['/add-watch-list-item', stock.Symbol]);
   }
 
 }

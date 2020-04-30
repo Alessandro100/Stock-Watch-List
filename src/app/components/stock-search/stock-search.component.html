@@ -1,9 +1,8 @@
 
     <mat-form-field class="stock-search-bar">
       <mat-label>Search for stock</mat-label>
-      <input matInput placeholder="Ex. Apple" [(ngModel)]='searchValue' (keyup)='onKeydownEvent()' (blur)="hideOutput()">
+      <input matInput placeholder="Ex. Apple" autocomplete="off" [(ngModel)]='searchValue' (keyup)='onKeydownEvent()' (blur)="hideOutput()">
     </mat-form-field>
-    <button mat-button color="primary" routerLink="/add-watch-list-item">Go</button>
     <mat-list class='stock-list-holder'>
       <mat-list-item *ngFor='let val of output | limitTo:6' class='stock-list-item' (click)='goToStock(val.item)'>
         <p matLine><b>{{val.item.Symbol}}</b> - {{val.item.Name}}</p>

@@ -5,7 +5,7 @@ import { AddWatchListItemComponent } from './components/add-watch-list-item/add-
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'add-watch-list-item', component: AddWatchListItemComponent },
+  { path: 'add-watch-list-item/:stockSymbol', component: AddWatchListItemComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

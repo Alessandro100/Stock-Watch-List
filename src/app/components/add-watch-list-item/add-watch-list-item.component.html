@@ -1,2 +1,20 @@
-<button mat-raised-button color="primary" (click)="saveNewWatchListItem()">Save / Add</button>
+<div *ngIf='stockInformation'>
+    <h3>{{stockInformation.companyName}} ({{stockInformation.symbol}}) [{{stockInformation.changePercent * 100}}]</h3>
+    <h3>Price: {{stockInformation.latestPrice}}</h3>
+    <h3>52-Week High: {{stockInformation.week52High}}</h3>
+    <h3>52-Week Low: {{stockInformation.week52Low}}</h3>
+</div>
+<mat-form-field>
+    <mat-label>Notes</mat-label>
+    <textarea matInput
+              cdkTextareaAutosize
+              [(ngModel)]="stockNote"
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+
+
+<button *ngIf='existingWatchListStock' mat-raised-button color="primary" (click)="updateStockItem()">Save Updates</button>
+<button *ngIf='!existingWatchListStock' mat-raised-button color="primary" (click)="saveNewWatchListItem()">Add Stock to Watchlist</button>
 <button mat-button color="warn" routerLink="/home">Cancel</button>
