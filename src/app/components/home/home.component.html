@@ -1,5 +1,8 @@
 
 <app-stock-search></app-stock-search>
 
-<!--Ngfor here-->
-<app-watch-list-item></app-watch-list-item>
+<div *ngFor='let watchListItem of watchListItems$ | async'>
+    <app-watch-list-item [watchListItem]="watchListItem"></app-watch-list-item>
+</div>
+
+<div *ngIf="(watchListItems$ | async)?.length==0">No Items on Watch List</div>

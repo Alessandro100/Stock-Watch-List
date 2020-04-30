@@ -5,17 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { HomeComponent } from './home/home.component';
+import { watchListReducer } from './reducers/watch-list.reducer';
+import { HomeComponent } from './components/home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { StockSearchComponent } from './stock-search/stock-search.component';
+import { StockSearchComponent } from './components/stock-search/stock-search.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
-import { WatchListItemComponent } from './watch-list-item/watch-list-item.component';
-import { AddWatchListItemComponent } from './add-watch-list-item/add-watch-list-item.component';
-import { DeleteWatchListItemPromptComponent } from './delete-watch-list-item-prompt/delete-watch-list-item-prompt.component'; 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { WatchListItemComponent } from './components/watch-list-item/watch-list-item.component';
+import { AddWatchListItemComponent } from './components/add-watch-list-item/add-watch-list-item.component';
+import { DeleteWatchListItemPromptComponent } from './components/delete-watch-list-item-prompt/delete-watch-list-item-prompt.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment'; 
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { DeleteWatchListItemPromptComponent } from './delete-watch-list-item-pro
     MatGridListModule,
     MatButtonModule,
     MatDialogModule,
-    StoreModule.forRoot({}, {})
+    MatSnackBarModule,
+    StoreModule.forRoot({watchListItems: watchListReducer}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AddWatchListItemComponent } from './add-watch-list-item/add-watch-list-item.component';
+import { HomeComponent } from './components/home/home.component';
+import { AddWatchListItemComponent } from './components/add-watch-list-item/add-watch-list-item.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
