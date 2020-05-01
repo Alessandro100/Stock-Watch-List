@@ -31,8 +31,6 @@ export class StockSearchComponent implements OnInit {
   }
 
   goToStock(stock) {
-    console.log("this is the stock");
-    console.log(stock);
     this.router.navigate(['/add-watch-list-item', stock.Symbol]);
   }
 

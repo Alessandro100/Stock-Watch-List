@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { add } from '../../actions/watch-list.actions';
+import { add, edit } from '../../actions/watch-list.actions';
 import { selectWatchListItemWithSymbol } from '../../selectors/watch-list.selector';
 import { WatchListItem } from 'src/app/interfaces/watch-list-item.interface';
 import { Store, select } from '@ngrx/store';
@@ -28,7 +28,7 @@ export class AddWatchListItemComponent implements OnInit {
     this.getStockInformation(stockSymbol);
 
     //checks to see if the current stock is in the watchlist
-    this.store.pipe(select(selectWatchListItemWithSymbol, { stockSymbol: stockSymbol })).subscribe((value: WatchListItem) =>{
+    this.store.pipe(select(selectWatchListItemWithSymbol, { stockSymbol: stockSymbol })).subscribe((value: WatchListItem) => {
       this.existingWatchListStock = value;
       if(this.existingWatchListStock) {
         this.stockNote = this.existingWatchListStock.note;
@@ -45,7 +45,12 @@ export class AddWatchListItemComponent implements OnInit {
   }
 
   updateStockItem() {
-
+    //clones the existingWatchListStock into a new object to update it
+    let updatedWatchListItem = Object.assign({}, this.existingWatchListStock);
+    updatedWatchListItem.note = this.stockNote;
+    this.store.dispatch(edit({payload: {watchListItem: updatedWatchListItem}}));
+    this.openSnackBar('Stock Succesfully Updated', 'updated')
+    this.router.navigateByUrl('/home');
   }
 
   saveNewWatchListItem() {

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DeleteWatchListItemPromptComponent } from '../delete-watch-list-item-prompt/delete-watch-list-item-prompt.component';
 import { MatDialog } from '@angular/material/dialog';
 import { WatchListItem } from 'src/app/interfaces/watch-list-item.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-watch-list-item',
@@ -11,9 +12,13 @@ import { WatchListItem } from 'src/app/interfaces/watch-list-item.interface';
 export class WatchListItemComponent implements OnInit {
   @Input() watchListItem: WatchListItem;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  editWatchListStock() {
+    this.router.navigate(['/add-watch-list-item', this.watchListItem.stockSymbol]);
   }
 
   confirmDeletePrompt() {
