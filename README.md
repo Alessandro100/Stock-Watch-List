@@ -1,27 +1,22 @@
-# AngularWatchlist
+# Alessandro's Watch List Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+This is a simple watch list application where users will be able to look for a stock in the 
+NASDAQ or NYSE, get basic information about the company, add a note and add it to their watch list.
 
-## Development server
+## Application Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+https://alessandro-watch-list-application.netlify.app/
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run test` to execute the unit tests, Karma was replaced by Jest. 
+Not all the tests pass.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Angular components used
+- Animations
+- Services
+- Routing
+- Pipes
+- HTTPS
+- Observables
+- Testing
