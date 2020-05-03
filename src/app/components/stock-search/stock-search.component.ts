@@ -11,11 +11,13 @@ import Fuse from 'fuse.js';
 export class StockSearchComponent implements OnInit {
   searchValue = '';
   output = [];
-  fuse = new Fuse(this.stockService.getStockList(), {
-    keys: ['Name', 'Symbol']
-  })
+  fuse;
 
-  constructor(private stockService: StockService, private router: Router) { }
+  constructor(private stockService: StockService, private router: Router) { 
+    this.fuse = new Fuse(this.stockService.getStockList(), {
+      keys: ['Name', 'Symbol']
+    })
+  }
 
   ngOnInit(): void {
   }

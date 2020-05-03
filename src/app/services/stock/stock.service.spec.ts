@@ -1,16 +1,24 @@
 import { TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { StockService } from './stock.service';
+
 
 describe('StockService', () => {
   let service: StockService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule], 
+      providers: [StockService]
+    });
     service = TestBed.inject(StockService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should get local stock information', () => {
+    expect(service.getStockList().length > 0).toEqual(true);
+  })
 });

@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms'
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
 import { StockSearchComponent } from './stock-search.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LimitToPipe } from '../../pipes/limit-to.pipe';
+import { StockService } from '../../services/stock/stock.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('StockSearchComponent', () => {
   let component: StockSearchComponent;
@@ -8,7 +14,9 @@ describe('StockSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StockSearchComponent ]
+      imports: [FormsModule, MatListModule, MatInputModule, HttpClientTestingModule, RouterTestingModule],
+      declarations: [ StockSearchComponent, LimitToPipe ],
+      providers: [StockService]
     })
     .compileComponents();
   }));
