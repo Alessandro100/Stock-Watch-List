@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { WatchListItemComponent } from './components/watch-list-item/watch-list-item.component';
 import { AddWatchListItemComponent } from './components/add-watch-list-item/add-watch-list-item.component';
 import { DeleteWatchListItemPromptComponent } from './components/delete-watch-list-item-prompt/delete-watch-list-item-prompt.component';
@@ -49,6 +50,7 @@ import { LimitToPipe } from './pipes/limit-to.pipe';
     MatGridListModule,
     MatButtonModule,
     MatDialogModule,
+    MatProgressBarModule,
     MatListModule,
     MatSnackBarModule,
     StoreModule.forRoot({watchListItems: watchListReducer}),

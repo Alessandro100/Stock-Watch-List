@@ -1,20 +1,27 @@
-<div *ngIf='stockInformation'>
-    <h3>{{stockInformation.companyName}} ({{stockInformation.symbol}}) [{{stockInformation.changePercent * 100}}]</h3>
-    <h3>Price: {{stockInformation.latestPrice}}</h3>
-    <h3>52-Week High: {{stockInformation.week52High}}</h3>
-    <h3>52-Week Low: {{stockInformation.week52Low}}</h3>
+
+<div class='stock-info-holder'>
+    <div *ngIf='stockInformation' [@enterAnimation]>
+        <h2>
+            {{stockInformation.companyName}} ({{stockInformation.symbol}}) 
+            <span [ngClass]="{'stock-up': stockInformation.changePercent > 0, 'stock-down': stockInformation.changePercent < 0}">{{(stockInformation.changePercent * 100).toFixed(2)}}%</span>
+        </h2>
+        <div class="stock-info-content">
+            <h4><b>Price:</b> {{stockInformation.latestPrice}}$</h4>
+            <h4><b>52-Week High:</b> {{stockInformation.week52High}}$</h4>
+            <h4><b>52-Week Low:</b> {{stockInformation.week52Low}}$</h4>
+        </div>
+    </div>
+    <mat-progress-bar *ngIf='!stockInformation' mode="indeterminate"></mat-progress-bar>
 </div>
 <mat-form-field>
-    <mat-label>Notes</mat-label>
+    <mat-label>Add Note</mat-label>
     <textarea matInput
               cdkTextareaAutosize
               [(ngModel)]="stockNote"
               #autosize="cdkTextareaAutosize"
               cdkAutosizeMinRows="1"
               cdkAutosizeMaxRows="5"></textarea>
-  </mat-form-field>
-
-
+</mat-form-field><br>
+<button mat-button color="warn" routerLink="/home">Cancel</button>
 <button *ngIf='existingWatchListStock' mat-raised-button color="primary" (click)="updateStockItem()">Save Updates</button>
 <button *ngIf='!existingWatchListStock' mat-raised-button color="primary" (click)="saveNewWatchListItem()">Add Stock to Watchlist</button>
-<button mat-button color="warn" routerLink="/home">Cancel</button>

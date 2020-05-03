@@ -6,11 +6,26 @@ import { Store, select } from '@ngrx/store';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StockService } from '../../services/stock/stock.service';
+import { trigger, style, animate, transition, state } from '@angular/animations';
 
 @Component({
   selector: 'app-add-watch-list-item',
   templateUrl: './add-watch-list-item.component.html',
-  styleUrls: ['./add-watch-list-item.component.scss']
+  styleUrls: ['./add-watch-list-item.component.scss'],
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({opacity: 0}),
+          animate('600ms', style({opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({opacity: 1}),
+          animate('500ms', style({opacity: 0}))
+        ])
+      ]
+    )
+  ]
 })
 export class AddWatchListItemComponent implements OnInit {
   stockInformation: any;
