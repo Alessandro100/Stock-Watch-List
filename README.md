@@ -14,7 +14,9 @@ Not all the tests pass.
 
 ## Angular components used
 - Animations
+- NGRX
 - Services
+- Components
 - Routing
 - Pipes
 - HTTPS
